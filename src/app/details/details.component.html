@@ -1,4 +1,10 @@
 <p>details works!</p>
 <button class="btn btn-primary" (click)="toggle()">Display Details!</button>
-<p *ngIf="show" >{{message}}</p>
-<p *ngFor="let message of messages"></p>
+<div *ngIf="show">
+    {{message}}
+</div> 
+<p *ngFor="let count of counter; let i = index" 
+    [ngStyle]="{backgroundColor : i >= 4 ? 'blue' : 'transparent'}"
+    [ngClass]="{oncolor : i >= 4}">
+    {{count}}
+</p>

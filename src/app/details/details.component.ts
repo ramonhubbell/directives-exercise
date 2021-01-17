@@ -3,16 +3,23 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styles : [`
+    .oncolor {
+      color : white;
+    }
+  `]
 })
 export class DetailsComponent implements OnInit {
 
   message = 'Secret Password = tuna';
   show = true;
-  messages = [''];
-  counter = 0;
+  messages = '';
+  counter = [];
+  logStatus: string = 'offcolor';
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
   }
@@ -22,11 +29,14 @@ export class DetailsComponent implements OnInit {
   }
 
   toggle(){
-    ++this.counter;
     this.show = !this.show;
-    console.log("Button clicked!");
-    this.messages.push(this.message);
-    console.log("messages: " + this.messages + " " + this.counter);
+    // this.counter.push(this.counter.length + 1);
+    this.counter.push(new Date());
+    if ((this.counter.length) >= 5){
+      this.logStatus = 'oncolor';
+    } else{
+      this.logStatus = 'offcolor';
+    }
   }
 
 }
